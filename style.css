@@ -49,7 +49,7 @@ body {
 }
 
 #header .logo img:hover{
-   transform: scale(1.5) rotate(45deg);
+   transform: scale(1.5) rotate(40deg);
 }
 
 #header nav ul {
