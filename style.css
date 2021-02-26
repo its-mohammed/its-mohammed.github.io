@@ -192,12 +192,13 @@ body {
 #home .controls {
   position: absolute;
   bottom: 14%;
-  left: 50%;
+  /* left: 50%; */
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  justify-content: center;
 }
 
 #home .controls .dots {
