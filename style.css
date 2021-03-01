@@ -45,11 +45,11 @@ body {
 }
 
 #header .logo img {
-  height: 6.5rem;
+  height: 6rem;
 }
 
 #header .logo img:hover{
-   transform: scale(1.3) rotate(25deg);
+   transform: scale(1.2) rotate(15deg);
 }
 
 #header nav ul {
@@ -734,6 +734,18 @@ body {
   -webkit-transform: skew(-180deg) rotate(180deg);
           transform: skew(-180deg) rotate(180deg);
 }
+
+
+
+#ilham:hover{
+  
+    transform: scale(1.6) rotate(10deg);
+
+}
+
+
+
+
 
 @media (max-width: 768px) {
   html {
