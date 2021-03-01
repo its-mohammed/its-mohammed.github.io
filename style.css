@@ -46,11 +46,11 @@ body {
 
 
 #header .logo img {
-  height: 5.6rem;
+  height: 5.5rem;
 }
 
 #header .logo img:hover{
-   transform: scale(1.2) rotate(15deg);
+   transform: scale(1.1) rotate(12deg);
 }
 
 #header nav ul {
