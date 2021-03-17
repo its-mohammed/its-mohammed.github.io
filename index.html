@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Responsive Food/Resturant Website Design Tutorial</title>
+<link rel="shortcut icon" href="https://freepngimg.com/thumb/burger%20sandwich/4-hamburger-burger-png-image-thumb.png" type="image/x-icon">
+
+      <!-- <link rel="stylesheet" href="fonts/font-awesome.css"> 
+       <link rel="stylesheet" href="css/bootstrap.min.css">  -->
+
+       
+       <!-- <script src="js/jquery.js"></script>  -->
+
+
+
+
+    <link rel="stylesheet" href="style1.scss">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/brands.min.css" integrity="sha512-dBL5cY4qTt42J1cfabCHTYR7KMztyd+n4t2GhD6EH/MKWJIIHuEYckJ1nHEpTwIaiDkrjzbc6WyiSkdLP+3INQ==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/fontawesome.min.css" integrity="sha512-shT5e46zNSD6lt4dlJHb+7LoUko9QZXTGlmWWx0qjI9UhQrElRb+Q5DM7SVte9G9ZNmovz2qIaV7IWv0xQkBkw==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/regular.min.css" integrity="sha512-1yhsV5mlXC9Ve9GDpVWlM/tpG2JdCTMQGNJHvV5TEzAJycWtHfH0/HHSDzHFhFgqtFsm1yWyyHqssFERrYlenA==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/solid.min.css" integrity="sha512-xIEmv/u9DeZZRfvRS06QVP2C97Hs5i0ePXDooLa5ZPla3jOgPT/w6CzoSMPuRiumP7A/xhnUBxRmgWWwU26ZeQ==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/svg-with-js.min.css" integrity="sha512-cNvC5iR8rfuBpqb4VRh48Y77JTM5nwjsEBQYS/LHzoWyf4bmmQ8LNMbg5KsEFOBO5vGbLUXwH3BAjG0m0oNWqA==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/v4-shims.min.css" integrity="sha512-NfhLGuxy6G12XHj7/bvm0RC3jmR25RdpImn8P19aIMmN5pndO0fvIg78ihN2WIJtVRs+AYVrnYF4AipVikGPLg==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/js/all.min.js" integrity="sha512-UwcC/iaz5ziHX7V6LjSKaXgCuRRqbTp1QHpbOJ4l1nw2/boCfZ2KlFIqBUA/uRVF0onbREnY9do8rM/uT/ilqw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/js/brands.min.js" integrity="sha512-/XaemEMILXoHbq4OqufiqRIdtZSPdDeFzoRo5aif5oV67J+62uXHuPcK6O/70ltl2Mdu/V1kR0nlwly5YWgk/Q==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/js/conflict-detection.min.js" integrity="sha512-NMq1f1H2bb0/AgVEbg9FVzOq5b/qnqjz2MLLm62wHC8CKbWK4aQHovZNYfkoJqKENpjlx4iVpxJUPli5Y7yWDw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/js/fontawesome.min.js" integrity="sha512-pafh0hrrT9ZPZl/jx0cwyp7N2+ozgQf+YK94jSupHHLD2lcEYTLxEju4mW/2sbn4qFEfxJGZyIX/yJiQvgglpw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/js/regular.min.js" integrity="sha512-VY2o6bMeYqxgjIpqcVKGcGSsv51m6gJ5urdLkG6qHfE9JOLttv/6XzBS0+Z1QnwNoHK8Ic4EaINKWGqg+5697w==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/js/solid.min.js" integrity="sha512-tmaD3q45JFEAXSixAxEo5p9K8ocD26I5zy42OQ5p7ZwnIx/JaGicXVHNawlZiZTHAU7jBNTl5XyZ8IcGwPG7gQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/js/v4-shims.min.js" integrity="sha512-ZExP+k88wqk55tV8sY8UB3/UJxSVPGqSOlZPuHzw1dzQpYztW077wiUhclSMZXIJ9Oivl+S9vitUH962XMVkZw==" crossorigin="anonymous"></script>
+    
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js" integrity="sha512-XKa9Hemdy1Ui3KSGgJdgMyYlUg1gM+QhL6cnlyTe2qzMCYm4nAZ1PsVerQzTTXzonUR+dmswHqgJPuwCq1MaAg==" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap-grid.min.css" integrity="sha512-cKoGpmS4czjv58PNt1YTHxg0wUDlctZyp9KUxQpdbAft+XqnyKvDvcGX0QYCgCohQenOuyGSl8l1f7/+axAqyg==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap-reboot.min.css" integrity="sha512-wV3xzHEw4kJUF4G0fyXSefKmUVhwwbOdZinJvOxmysxAXSZBl17porgPOcQBDBQTEwgGevxXGWAAQ/UPaSd0nw==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" integrity="sha512-P5MgMn1jBN01asBgU0z60Qk4QxiXo86+wlFahKrsQf37c9cro517WzVSPPV1tDKzhku2iJ2FVgL67wG03SGnNA==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js" integrity="sha512-wV7Yj1alIZDqZFCUQJy85VN+qvEIly93fIQAN7iqDFCPEucLCeNFz4r35FCo9s6WrpdDQPi80xbljXB8Bjtvcg==" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+<!-- header section starts -->
+
+<header id="header">
+
+<nav>
+    <ul>
+        
+        <li><a href="#home">Home</a></li>
+        <li><a href="#special">special</a></li>
+        <li><a href="#about">about</a></li>
+        <li><a href="#dish">dishes</a></li>
+        <li><a href="#contact">contact</a></li>
+    </ul>
+</nav>
+
+<div class="fas fa-hamburger"></div>
+
+
+<a href="#" class="logo"><img src="https://freepngimg.com/thumb/meat/34160-2-cooked-meat-file.png" alt=""></a>
+<!-- <a href="#" class="logo"><img src="https://freepngimg.com/thumb/burger%20sandwich/4-hamburger-burger-png-image-thumb.png" alt=""></a> -->
+<!-- <a href="#" class="logo"><img src="https://freepngimg.com/thumb/coca%20cola/9-coca-cola-bottle-png-image.png" alt=""></a> -->
+
+
+</header>
+
+<!-- header section ends -->
+
+
+<!-- home section starts  -->
+
+
+<section id="home" class="container-fluid">
+<div class="row min-vh-100 align-items-center">
+    
+<div class="col-md-8 ml-md-5 text-md-left text-center content">
+    <h1>food that you can't resist</h1>
+    <h2>enjoy the marvelous taste</h2>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta vel quisquam nostrum cum minima nobis consequatur alias eius omnis dolorem.</p>
+    <a href="#special"><button>get started</button></a>
+</div>
+
+<div class="video-container">
+    <!-- <video src="C:\Users\Ilham\Desktop\webpage\video3.mp4" muted autoplay loop></video> -->
+    
+   
+    <!-- <video src="C:\Users\Ilham\Desktop\webpage\video3.mp4" muted autoplay loop class="vid vid3"></video> -->
+    <!-- <video src="D:\Github\its-mohammed.github.io\video5.mp4" muted autoplay loop class="vid vid1"></video> -->
+    <!-- <video src="https://player.vimeo.com/external/489988776.sd.mp4?s=189c811e6ae330d7db887876cae85b4d661c33b7&profile_id=139&oauth2_token_id=57447761" muted autoplay loop class="vid vid1"></video> -->
+    <video src="https://media.istockphoto.com/videos/super-slowmo-adding-a-sprinkle-of-cheese-on-pizza-video-id180617222" muted autoplay loop class="vid vid2"></video>
+    
+    <video src="https://media.istockphoto.com/videos/pizza-slice-video-id483233529" muted autoplay loop class="vid vid1"></video>
+
+    <!-- <video src="https://player.vimeo.com/external/469969851.sd.mp4?s=fcb96f3944f47991d83ee06c8d0576b0c57ea20c&profile_id=139&oauth2_token_id=57447761" muted autoplay loop class="vid vid2"></video> -->
+    <video src="https://player.vimeo.com/external/391911967.sd.mp4?s=784f1a913535497d7dae782688ab2cfef40d03c2&profile_id=139&oauth2_token_id=57447761" muted autoplay loop class="vid vid3"></video>
+</div>
+
+<div class="controls">
+    <div class="dots dot1"></div>
+    <div class="dots dot2"></div>
+    <div class="dots dot3"></div>
+</div>
+
+</div>
+
+</section>
+
+<!-- home section ends  -->
+
+
+<!-- special card section starts  -->
+
+<section id="special" class="container-fluid">
+
+<div class="heading text-center">
+<h1>our <span>special</span></h1>
+<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, atque.</p>
+</div>
+
+
+<div class="card-container">
+
+    <div class="card">
+        <img src="https://images.pexels.com/photos/1260968/pexels-photo-1260968.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque eum nam, officia porro dicta molestiae! Veniam, nemo aliquid. Repellat, iste.</p>
+        <a href="#"><button>read more</button></a>
+    </div>
+
+    <div class="card">
+        <img src="https://images.pexels.com/photos/1028433/pexels-photo-1028433.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque eum nam, officia porro dicta molestiae! Veniam, nemo aliquid. Repellat, iste.</p>
+        <a href="#"><button>read more</button></a>
+    </div>
+
+    <div class="card">
+        <img src="https://images.pexels.com/photos/2471171/pexels-photo-2471171.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque eum nam, officia porro dicta molestiae! Veniam, nemo aliquid. Repellat, iste.</p>
+        <a href="#"><button>read more</button></a>
+    </div>
+
+</div>
+
+</section>
+
+<!-- special card section ends  -->
+
+<!-- about section starts  -->
+
+<section id="about" class="container">
+
+    <div class="heading text-center">
+    <h1><span>about</span> us</h1>
+    </div>
+
+    <div class="row min-vh-100">
+
+        <div class="col-md-6 text-center text-md-left align-self-center content">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi recusandae iusto, perferendis earum laboriosam rerum et quisquam iste vel commodi corporis praesentium porro impedit ullam!</p>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci iure aliquam illum quaerat quia voluptate.</p>
+            <a href="#"><button>learn more</button></a>
+        </div>
+
+        <div class="col-md-6 image">
+            <img src="https://www.pngkey.com/png/full/366-3664414_cook-clipart-chef-cupcake-double-sided-airplane-cupcake.png">
+           
+    </div>
+
+</section>
+
+<!-- about section ends  -->
+
+
+<!-- dish section starts  -->
+
+<section id="dish" class="container">
+
+    <div class="heading text-center">
+        <h1>our <span>dishes</span></h1>
+    </div>
+
+    <div class="box-container">
+
+        <div class="box">
+            <img src="https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+            
+            <div class="info">
+                <h3>dish1</h3>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam, nihil.</p>
+                <a href="#"><button>view</button></a>
+            </div>
+        </div>
+
+        <div class="box">
+            <!-- <img src="D:\Github\its-mohammed.github.io\imgg1.jpeg" alt=""> -->
+            <img src="https://images.pexels.com/photos/14737/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+            
+            <div class="info">
+                <h3>dish2</h3>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam, nihil.</p>
+                <a href="#"><button>view</button></a>
+            </div>
+        </div>
+
+        <div class="box">
+            <!-- <img src="D:\Github\its-mohammed.github.io\imgg2.jpeg" alt=""> -->
+            <img src="https://images.pexels.com/photos/1211887/pexels-photo-1211887.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+            <div class="info">
+                <h3>dish3</h3>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam, nihil.</p>
+                <a href="#"><button>view</button></a>
+            </div>
+        </div>
+
+        <div class="box">
+            <!-- <img src="D:\Github\its-mohammed.github.io\imgg3.jpeg" alt=""> -->
+            <img src="https://images.pexels.com/photos/2092897/pexels-photo-2092897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+            <div class="info">
+                <h3>dish4</h3>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam, nihil.</p>
+                <a href="#"><button>view</button></a>
+            </div>
+        </div>
+
+        <div class="box">
+            <!-- <img src="D:\Github\its-mohammed.github.io\imgg4.jpeg" alt=""> -->
+            <img src="https://images.pexels.com/photos/286283/pexels-photo-286283.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+            <div class="info">
+                <h3>dish5</h3>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam, nihil.</p>
+                <a href="#"><button>view</button></a>
+            </div>
+        </div>
+
+        <div class="box">
+            <img src="https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+            <div class="info">
+                <h3>dish6</h3>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam, nihil.</p>
+                <a href="#"><button>view</button></a>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- dish section ends  -->
+
+<!-- contact section starts  -->
+
+<section id="contact" class="container-fluid">
+
+    <div class="heading text-center">
+        <h1><span>contact</span> us</h1>
+    </div>
+
+    <div class="row justify-content-center">
+
+        <form action="http://localhost/php/index.php" method="POST" class="col-md-7">
+
+            <div class="inputBox">
+                <input type="text" required>
+                <h3>full name</h3>
+            </div>
+
+            <div class="inputBox">
+                <input type="email" required>
+                <h3>e-mail</h3>
+            </div>
+
+            <div class="inputBox">
+                <textarea required name="" id="" cols="30" rows="10"></textarea>
+                <h3>message</h3>
+            </div>
+
+            <input type="submit" value="send">
+
+        </form>
+
+    </div>
+
+</section>
+
+<!-- contact section ends  -->
+
+<!-- footer section starts  -->
+
+<section id="footer" class="container-fluid">
+
+<div class="row align-items-center">
+
+<div class="col-md-4 brand">
+
+<!-- <a href="#" class="logo"><img src="https://c0.klipartz.com/pngpicture/975/922/gratis-png-redes-sociales-portatiles-graficos-de-red-iconos-de-computadora-redes-sociales-thumbnail.png" width="200px" height="200px" alt=""></a> -->
+
+<div class="icons">
+
+    <a href="#" class="fab fa-facebook-square"></a>
+    <a href="#" class="fab fa-twitter-square"></a>
+    <a href="#" class="fab fa-instagram-square"></a>
+    <a href="#" class="fab fa-pinterest-square"></a>
+
+</div>
+
+</div>
+
+<div class="col-md-4 footer-links">
+<h3>links:</h3>
+<a href="#home">home</a>
+<a href="#special">special</a>
+<a href="#about">about</a>
+<a href="#dish">dish</a>
+<a href="#contact">contact</a>
+</div>
+
+<div class="col-md-4 text-center text-md-left letter">
+<h2>newsletter</h2>
+<input type="text"><br>
+<input type="submit" value="subscribe">
+</div>
+
+</div>
+
+<h1>&copy; copyright @ 2021 by <span>mr.Mohammed Ilham <img id="ilham" src="https://freepngimg.com/thumb/emoji/64953-emoticon-cute-smiley-illustration-villain-cartoon-emoji.png" width="50px" height="50px" alt=""></span></h1>
+
+</section>
+
+<!-- footer section ends  -->
+
+
+
+
+
+
+
+<!-- script part starts  -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js" integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ==" crossorigin="anonymous"></script>
+<!-- https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.map -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.js" integrity="sha512-1lagjLfnC1I0iqH9plHYIUq3vDMfjhZsLy9elfK89RBcpcRcx4l+kRJBSnHh2Mh6kLxRHoObD1M5UTUbgFy6nA==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js" integrity="sha512-/DXTXr6nQodMUiq+IUJYCt2PPOUjrHJ9wFrqpJ3XkgPNOZVfMok7cRw6CSxyCQxXn6ozlESsSh1/sMCTF1rL/g==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js" integrity="sha512-/DXTXr6nQodMUiq+IUJYCt2PPOUjrHJ9wFrqpJ3XkgPNOZVfMok7cRw6CSxyCQxXn6ozlESsSh1/sMCTF1rL/g==" crossorigin="anonymous"></script>
+<!-- https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.map -->
+
+
+<script src="js/jquery.js"></script>
+
+
+
+<script>
+
+$(document).ready(function(){
+
+    $('.fa-hamburger').click(function(){
+        $(this).toggleClass('fa-times');
+        $('nav').toggleClass('nav-toggle');
+    });
+
+    $('nav ul li a').click(function(){
+        $('.fa-hamburger').removeClass('fa-times');
+        $('nav').removeClass('nav-toggle');
+    });
+
+    $('.dot1').click(function(){
+        $('.vid1').css('display','block');
+        $('.vid2').css('display','none');
+        $('.vid3').css('display','none');
+    });
+
+    $('.dot2').click(function(){
+        $('.vid2').css('display','block');
+        $('.vid1').css('display','none');
+        $('.vid3').css('display','none');
+    });
+
+    $('.dot3').click(function(){
+        $('.vid3').css('display','block');
+        $('.vid1').css('display','none');
+        $('.vid2').css('display','none');
+    });
+
+    $(window).on('scroll load',function(){
+        if($(window).scrollTop() > 10){
+            $('#header').addClass('header-active');
+        }else{
+            $('#header').removeClass('header-active');
+        }
+    });
+
+});
+
+
+
+</script>
+
+</body> 
+</html>
