@@ -1,0 +1,60 @@
+body {
+  margin: 0px;
+  overflow-y: hidden;
+  background: rgba(126, 125, 125, 0.438);
+}
+
+#Instructions {
+  float: left;
+  width: 500px;
+  display: block;
+  padding: 20px;
+}
+
+canvas {
+  margin: 10px;
+  border: 1px solid black;
+  float: initial;
+  display: block;
+}
+
+#reset{
+  background-color: #006621;
+  padding: 5px;
+  display: block;
+  border-radius: 5px;
+  text-align: center;
+  color: #ddd;
+  outline: none;
+  height: 40px;
+  width: 150px;
+ margin-left: 100%;
+  
+}
+
+#reset:hover {
+  background-color: #00d443;
+  cursor: pointer;
+  color: #000;
+  transform: scale(1);
+}
+
+.footer {
+  clear: left;
+  display: block;
+  background-color: #222;
+  margin: 0px;
+  position: absolute;
+  bottom:0px;
+  width: 100%;
+}
+
+.footer h3 {
+  font-size: 12px;
+  font-weight: normal;
+  color: #999;
+  display: block;
+  float: left;
+  margin: 20px;
+  margin-right: 100px;
+}
