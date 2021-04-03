@@ -1,689 +1,285 @@
+<!---
+Description: Home page for game. Calls initialize_game() function in JS_Game.js file on page load and
+contains code for game over and game complete modals.
+Author: Open Source - Contributor list can be seen in GitHub
+-->
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Kusina - Free Bootstrap 4 Template by Colorlib</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lovers+Quarrel" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
-    
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="css/aos.css">
+	<title>The Jumping Dead</title>
 
-    <link rel="stylesheet" href="css/ionicons.min.css">
+	<link rel="stylesheet" type="text/css" href="Style-Sheets/JS_game.css">
+	<link rel="stylesheet" type="text/css" href="Style-Sheets/InstructionsModal.css">
+	<link rel="stylesheet" type="text/css" href="Style-Sheets/GameOverModal.css">
+	<link rel="stylesheet" type="text/css" href="Style-Sheets/GameCompleteModal.css">
+	<link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="css/jquery.timepicker.css">
+	<!--Main game script-->
+	<script type="text/javascript" src="Game.js"></script>
 
-    
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
-  </head>
-  <body>
-    
-	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-	    <div class="container">
-	      <a class="navbar-brand" href="index.html">Kusina</a>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="oi oi-menu"></span> Menu
-	      </button>
+</head>
 
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav ml-auto">
-	        	<li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-	        	<li class="nav-item"><a href="menu.html" class="nav-link">Menu</a></li>
-	        	<li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-	        </ul>
-	      </div>
-	    </div>
-	  </nav>
-    <!-- END nav -->
-    
-    <section class="home-slider js-fullheight owl-carousel bg-white">
-      <div class="slider-item js-fullheight">
-      	<div class="overlay"></div>
-        <div class="container-fluid p-0">
-          <div class="row d-md-flex no-gutters slider-text js-fullheight align-items-center justify-content-end" data-scrollax-parent="true">
-          	<div class="one-third order-md-last img js-fullheight" style="background-image:url(images/bg_3.jpg);">
-          		<div class="overlay"></div>
-          	</div>
-	          <div class="one-forth d-flex js-fullheight align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-	          	<div class="text mt-md-5">
-		            <h1 class="mb-4">Eat Healthy <br> and Natural Foods</h1>
-		            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country.</p>
-		            <p><a href="#" class="btn btn-primary px-4 py-3 mt-3">Book A Table</a></p>
-	            </div>
-	          </div>
-        	</div>
-        </div>
-      </div>
+<!--On page load call showInstructions method-->
+<body onload="showInstructions()" onkeydown="KeyDown(event)" onkeyup="KeyUp(event)" ondragend="onMouseUp()">
+	<!-- Banner -->
+	<img id="banner" src="Pictures/banner.png">
 
-      <div class="slider-item js-fullheight">
-      	<div class="overlay"></div>
-        <div class="container-fluid p-0">
-          <div class="row d-flex no-gutters slider-text js-fullheight align-items-center justify-content-end" data-scrollax-parent="true">
-          	<div class="one-third order-md-last img js-fullheight" style="background-image:url(images/bg_2.jpg);">
-          		<div class="overlay"></div>
-          	</div>
-	          <div class="one-forth d-flex js-fullheight align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-	          	<div class="text mt-md-5">
-		            <h1 class="mb-4">We Love <br> Delicious Foods</h1>
-		            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country.</p>
-		            <p><a href="#" class="btn btn-primary px-4 py-3 mt-3">Book A Table</a></p>
-	            </div>
-	          </div>
-        	</div>
-        </div>
-      </div>
-    </section>
-	
+	<!--Audio elements-->
+	<audio id="bgm" style="display: none" controls>
+		<source src="Audio/bgnd_mus.flac" type="audio/flac">
+		Your browser does not support the audio element.
+	</audio>
 
-		<section class="ftco-section ftco-wrap-about ftco-no-pb ftco-no-pt">
-			<div class="container">
-				<div class="row no-gutters">
-					<div class="col-sm-5 img img-2 d-flex align-items-center justify-content-center justify-content-md-end" style="background-image: url(images/about.jpg); position: relative"></div>
-					<div class="col-sm-7 wrap-about py-5 ftco-animate">
-	          <div class="heading-section mt-5 mb-4">
-	          	<div class="pl-lg-5 ml-md-5">
-		          	<span class="subheading">About</span>
-		            <h2 class="mb-4">Welcome to Kusina Restaurant</h2>
-	            </div>
-	          </div>
-	          <div class="pl-lg-5 ml-md-5">
-							<p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-							<h3 class="mt-5">Special Recipe</h3>
-							<div class="thumb my-4 d-flex">
-	            	<a href="#" class="thumb-menu pr-md-4 text-center">
-	            		<div class="img" style="background-image: url(images/lunch-4.jpg);"></div>
-	            		<h4>Australian Organic Beef</h4>
-	            	</a>
-	            	<a href="#" class="thumb-menu pr-md-4 text-center">
-	            		<div class="img" style="background-image: url(images/lunch-7.jpg);"></div>
-	            		<h4>Australian Organic Beef</h4>
-	            	</a>
-	            	<a href="#" class="thumb-menu pr-md-4 text-center">
-	            		<div class="img" style="background-image: url(images/lunch-6.jpg);"></div>
-	            		<h4>Australian Organic Beef</h4>
-	            	</a>
-	            </div>
-						</div>
+	<audio id="jump" style="display: none" controls>
+		<source src="Audio/jump_04.wav" type="audio/wav">
+			Your browser does not support the audio element.
+	</audio>
+
+	<audio id="coinpickup" style="display: none" controls>
+		<source src="Audio/coin_pickup.wav" type="audio/wav">
+			Your browser does not support the audio element.
+	</audio>
+
+	<audio id="gameover" style="display: none" controls>
+		<source src="Audio/gameover.wav" type="audio/wav">
+			Your browser does not support the audio element.
+	</audio>
+
+	<audio id="gamewon" style="display: none" controls>
+		<source src="Audio/win_sound.wav" type="audio/wav">
+			Your browser does not support the audio element.
+	</audio>
+
+	<audio id="enemykilled" style="display: none" controls>
+		<source src="Audio/enemy_killed.wav" type="audio/wav">
+			Your browser does not support the audio element.
+	</audio>
+
+
+
+	<!--Restart button on game page-->
+	<canvas id="canvas" width=300 height=300></canvas>
+
+	<!--button id="restartButtonNearScore" class="button" onClick="restartGame()">
+		<img class="buttonImages" src="Pictures/restart.png" alt="RestartButton" />
+	</button-->
+
+
+	<div id="instructionsModal" class="modal">
+
+		<div class="modal-content">
+
+			<h3>Instructions</h3>
+
+			<p>How to play:</p>
+			<ul>
+				<li>Complete each level by avoiding the enemy characters</li>
+				<li>Kill enemies by jumping on them</li>
+				<li>Killing an enemy grants you bonus score</li>
+			</ul>
+
+			<p>Controls:</p>
+			<ul>
+				<li>On-screen buttons</li>
+				<li>Keyboard arrows and WASD: Move left and right, jump, and duck</li>
+				<li>Press 'p' to pause the game</li>
+				<li>Press 'm' to toggle music</li>
+                <li>Press Space to restart the game</li>
+			</ul>
+
+			<!--Play button-->
+			<div class="startButton">
+				<img class="buttonImages" src="Pictures/play.png" width="100%" onClick="initialize_game()" alt="PlayButton" />
+			</div>
+
+		</div>
+	</div>
+
+	<div id="gameOverModal" class="modal">
+		<div class="modal-content">
+
+			<img class="gameOverLabel" src="Pictures/game_over.png" alt="GAME OVER">
+			<p class="gameOverDesc">Press RESTART button or Space to restart the game.</p>
+
+			<div class="restartButton">
+				<img class="buttonImages" src="Pictures/restart.png" width="100%" onClick="initialize_game()" alt="RestartButton" />
+			</div>
+		</div>
+	</div>
+
+	<div id="gameCompleteModal" class="modal">
+		<div class="modal-content">
+			<img class="gameOverLabel" src="Pictures/victory.png" alt="VICTORY">
+			<p class="gameOverDesc">You completed the game! Awesome Work!</p>
+			<div class="restartButton">
+				<img src="Pictures/restart.png" width="100%" onClick="initialize_game()" alt="RestartButton" />
+			</div>
+		</div>
+	</div>
+
+	<div id="gamePauseModal" class="modal">
+		<p class="gamePause">You paused the game!</p>
+		<p class="gamePlayPause">Press p to play</p>
+		<div class="resumeButton">
+			<img class="button" src="Pictures/resume.png" width="100%" onClick="pauseGame()" alt="ResumeGame" />
+		</div>
+	</div>
+
+	<div id="optionsModal" class="modal">
+		<div class="modal-content">
+				<div class="gameOptions"><h2>OPTIONS</h2></div>
+				<div class="mess">
+					<label id="mess"></label>
+				</div>
+				<div class="row">
+					<div class="col-25">
+        		<label for="Up1">Up</label>
+					</div>
+					<div class="col-75">
+        		<input type="text" id="UP" name="up1Key" value="Up" onclick="dispMess('UP','UP')" readonly>
+					</div>
+			</div>
+				<div class="row">
+					<div class="col-25">
+        		<label for="Down1">Down</label>
+					</div>
+					<div class="col-75">
+        		<input type="text" id="DOWN" name="down1Key" value="Down" onclick="dispMess('DOWN','DOWN')" readonly>
+					</div>
+			</div>
+				<div class="row">
+					<div class="col-25">
+        		<label for="Left1">Left</label>
+					</div>
+					<div class="col-75">
+						<input type="text" id="LEFT" name="left1Key" value="Left" onclick="dispMess('LEFT','LEFT')" readonly>
+					</div>
+    		</div>
+				<div class="row">
+					<div class="col-25">
+        		<label for="Right1">Right</label>
+					</div>
+					<div class="col-75">
+						<input type="text" id="RIGHT" name="Right1Key" value="Right" onclick="dispMess('RIGHT','RIGHT')" readonly>
+					</div>
+    		</div>
+				<div class="row">
+					<div class="col-25">
+        		<label for="Up2">Up (Alt.)</label>
+					</div>
+					<div class="col-75">
+        		<input type="text" id="W" name="wKey" value="W" onclick="dispMess('W','UP')" readonly>
+					</div>
+			</div>
+				<div class="row">
+					<div class="col-25">
+        		<label for="Down2">Down (Alt.)</label>
+					</div>
+					<div class="col-75">
+        		<input type="text" id="S" name="sKey" value="S" onclick="dispMess('S','DOWN')" readonly>
+					</div>
+			</div>
+				<div class="row">
+					<div class="col-25">
+        		<label for="Left2">Left (Alt.)</label>
+					</div>
+					<div class="col-75">
+        		<input type="text" id="A" name="left2Key" value="A" onclick="dispMess('A','LEFT')" readonly>
+					</div>
+    		</div>
+				<div class="row">
+					<div class="col-25">
+        		<label for="Right2">Right (Alt.)</label>
+					</div>
+					<div class="col-75">
+						<input type="text" id="D" name="Right2Key" value="D" onclick="dispMess('D','RIGHT')" readonly>
+					</div>
+    		</div>
+				<div class="row">
+					<div class="col-25">
+        		<label for="Restart">Restart</label>
+					</div>
+					<div class="col-75">
+        		<input type="text" id="SPACE" name="SpaceKey" value="Space" onclick="dispMess('SPACE','SPACE')" readonly>
+					</div>
+    		</div>
+				<div class="row">
+					<div class="col-25">
+        		<label for="Pause">Pause</label>
+					</div>
+					<div class="col-75">
+        		<input type="text" id="P" name="PauseKey" value="P" onclick="dispMess('P','PAUSE')" readonly>
+					</div>
+    		</div>
+				<div class="row">
+					<div class="col-25">
+        		<label for="Sound">Sound</label>
+					</div>
+					<div class="col-75">
+        		<input type="text" id="M" name="SoundKey" value="M" onclick="dispMess('M','SND')" readonly>
+					</div>
+    		</div>
+				<div class="row">
+					<div class="col-25">
+        		<label ><img class="Sound" src="Pictures/audioOn.png" alt="OptionGame" onclick="dispMess('M','SOUND')" id="MImg"></label>
+					</div>
+					<div class="col-75">
+						<button class="button" id="buttonOptions" onClick="gameOptions()">
+							<img class="back" src="Pictures/Backbtn.png" alt="OptionGame">
+						</button>
 					</div>
 				</div>
+		</div>
+	</div>
+
+	<div id="levelTransitionModal" class="modal">
+		<div id="levelTransitionModalContent" class="modal-content">
+			<img class="gameOverLabel" src="Pictures/victory.png" alt="VICTORY">
+			<p class="levelTransitionMessage">Level complete!</p>
+			<p class="levelTransitionMessage">Press c to continue</p>
+			<div class="resumeButton">
+				<img class="button" src="Pictures/resume.png" width="100%" onClick="resumeGame()" alt="ResumeGame" />
 			</div>
-		</section>
+		</div>
+	</div>
 
-		<section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(images/bg_4.jpg);" data-stellar-background-ratio="0.5">
-    	<div class="container">
-    		<div class="row d-md-flex align-items-center justify-content-center">
-    			<div class="col-lg-10">
-    				<div class="row d-md-flex align-items-center">
-		          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-		            <div class="block-18">
-		              <div class="text">
-		                <strong class="number" data-number="18">0</strong>
-		                <span>Years of Experienced</span>
-		              </div>
-		            </div>
-		          </div>
-		          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-		            <div class="block-18">
-		              <div class="text">
-		                <strong class="number" data-number="20000">0</strong>
-		                <span>Happy Customers</span>
-		              </div>
-		            </div>
-		          </div>
-		          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-		            <div class="block-18">
-		              <div class="text">
-		                <strong class="number" data-number="564">0</strong>
-		                <span>Finished Projects</span>
-		              </div>
-		            </div>
-		          </div>
-		          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-		            <div class="block-18">
-		              <div class="text">
-		                <strong class="number" data-number="300">0</strong>
-		                <span>Working Days</span>
-		              </div>
-		            </div>
-		          </div>
-	          </div>
-          </div>
-        </div>
-    	</div>
-    </section>
+	<!--Game play buttons-->
+	<div id="buttonWrapper">
+		<div id="buttonRestart">
+			<button id="restartButtonLeft" class="button" onClick="restartGame()">
+				<img class="buttonImages" src="Pictures/restart.png" alt="RestartButton" />
+			</button>
+		</div>
+		<div id="buttonController">
+		<button class="button" onmousedown="moveLeftMouse()" onmouseup="onMouseUp()" ontouchstart="moveLeftMouse()" ontouchend="onMouseUp()">
+			<img class="buttonImages" src="Pictures/left.png" alt="LEFT">
+		</button>
+		<button class="button" onmousedown="moveUp()" ontouchstart="moveUp()">
+			<img class="buttonImages" src="Pictures/jump.png" alt="JUMP">
+		</button>
+		<button class="button" onmousedown="duck()" onmouseup="duckMouseUp()" ontouchstart="duck()" ontouchend="duckMouseUp()">
+			<img class="buttonImages" src="Pictures/duck.png" alt="DUCK">
+		</button>
+		<button class="button" onmousedown="moveRightMouse()" onmouseup="onMouseUp()" ontouchstart="moveRightMouse()" ontouchend="onMouseUp()">
+			<img class="buttonImages" src="Pictures/right.png" alt="RIGHT">
+		</button>
+		</div>
+		<div id="buttonPauseAudio">
+		<button class="button" id="buttonAudio" onClick="muteMusic()" >
+			<img class="buttonImages" id="audioButton" src="Pictures/audioOn.png" alt="MuteMusic">
+		</button>
+		<button class="button" id="buttonPause" onClick="pauseGame()">
+			<img class="buttonImages" src="Pictures/pause.png" alt="PauseGame">
+		</button>
+		<button class="button" id="buttonOptions" onClick="gameOptions()">
+			<img class="buttonImages" src="Pictures/Settingsbtn.png" alt="OptionGame">
+		</button>
+		</div>
+	</div>
 
+</body>
 
-    <section class="ftco-section">
-    	<div class="container">
-    		<div class="row justify-content-center mb-5 pb-2">
-          <div class="col-md-7 text-center heading-section ftco-animate">
-          	<span class="subheading">Specialties</span>
-            <h2 class="mb-4">Our Menu</h2>
-          </div>
-        </div>
-        <div class="row">
-        	<div class="col-md-6 col-lg-4 menu-wrap">
-        		<div class="heading-menu text-center ftco-animate">
-        			<h3>Breakfast</h3>
-        		</div>
-        		<div class="menus d-flex ftco-animate">
-              <div class="menu-img img" style="background-image: url(images/breakfast-1.jpg);"></div>
-              <div class="text">
-              	<div class="d-flex">
-	                <div class="one-half">
-	                  <h3>Grilled Beef with potatoes</h3>
-	                </div>
-	                <div class="one-forth">
-	                  <span class="price">$29</span>
-	                </div>
-	              </div>
-	              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-              </div>
-            </div>
-            <div class="menus d-flex ftco-animate">
-              <div class="menu-img img" style="background-image: url(images/breakfast-2.jpg);"></div>
-              <div class="text">
-              	<div class="d-flex">
-	                <div class="one-half">
-	                  <h3>Grilled Crab with Onion</h3>
-	                </div>
-	                <div class="one-forth">
-	                  <span class="price">$29</span>
-	                </div>
-	              </div>
-	              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-              </div>
-            </div>
-            <div class="menus d-flex ftco-animate">
-              <div class="menu-img img" style="background-image: url(images/breakfast-3.jpg);"></div>
-              <div class="text">
-              	<div class="d-flex">
-	                <div class="one-half">
-	                  <h3>Grilled Crab with Onion</h3>
-	                </div>
-	                <div class="one-forth">
-	                  <span class="price">$29</span>
-	                </div>
-	              </div>
-	              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-              </div>
-            </div>
-        	</div>
-
-        	<div class="col-md-6 col-lg-4 menu-wrap">
-        		<div class="heading-menu text-center ftco-animate">
-        			<h3>Lunch</h3>
-        		</div>
-        		<div class="menus d-flex ftco-animate">
-              <div class="menu-img img" style="background-image: url(images/lunch-1.jpg);"></div>
-              <div class="text">
-              	<div class="d-flex">
-	                <div class="one-half">
-	                  <h3>Grilled Beef with potatoes</h3>
-	                </div>
-	                <div class="one-forth">
-	                  <span class="price">$29</span>
-	                </div>
-	              </div>
-	              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-              </div>
-            </div>
-            <div class="menus d-flex ftco-animate">
-              <div class="menu-img img" style="background-image: url(images/lunch-2.jpg);"></div>
-              <div class="text">
-              	<div class="d-flex">
-	                <div class="one-half">
-	                  <h3>Grilled Crab with Onion</h3>
-	                </div>
-	                <div class="one-forth">
-	                  <span class="price">$29</span>
-	                </div>
-	              </div>
-	              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-              </div>
-            </div>
-            <div class="menus d-flex ftco-animate">
-              <div class="menu-img img" style="background-image: url(images/lunch-3.jpg);"></div>
-              <div class="text">
-              	<div class="d-flex">
-	                <div class="one-half">
-	                  <h3>Grilled Crab with Onion</h3>
-	                </div>
-	                <div class="one-forth">
-	                  <span class="price">$29</span>
-	                </div>
-	              </div>
-	              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-              </div>
-            </div>
-        	</div>
-
-        	<div class="col-md-6 col-lg-4 menu-wrap">
-        		<div class="heading-menu text-center ftco-animate">
-        			<h3>Dinner</h3>
-        		</div>
-        		<div class="menus d-flex ftco-animate">
-              <div class="menu-img img" style="background-image: url(images/dinner-1.jpg);"></div>
-              <div class="text">
-              	<div class="d-flex">
-	                <div class="one-half">
-	                  <h3>Grilled Beef with potatoes</h3>
-	                </div>
-	                <div class="one-forth">
-	                  <span class="price">$29</span>
-	                </div>
-	              </div>
-	              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-              </div>
-            </div>
-            <div class="menus d-flex ftco-animate">
-              <div class="menu-img img" style="background-image: url(images/dinner-2.jpg);"></div>
-              <div class="text">
-              	<div class="d-flex">
-	                <div class="one-half">
-	                  <h3>Grilled Crab with Onion</h3>
-	                </div>
-	                <div class="one-forth">
-	                  <span class="price">$29</span>
-	                </div>
-	              </div>
-	              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-              </div>
-            </div>
-            <div class="menus d-flex ftco-animate">
-              <div class="menu-img img" style="background-image: url(images/dinner-3.jpg);"></div>
-              <div class="text">
-              	<div class="d-flex">
-	                <div class="one-half">
-	                  <h3>Grilled Crab with Onion</h3>
-	                </div>
-	                <div class="one-forth">
-	                  <span class="price">$29</span>
-	                </div>
-	              </div>
-	              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-              </div>
-            </div>
-        	</div>
-
-        	<!--  -->
-        	<div class="col-md-6 col-lg-4 menu-wrap">
-        		<div class="heading-menu text-center ftco-animate">
-        			<h3>Desserts</h3>
-        		</div>
-        		<div class="menus d-flex ftco-animate">
-              <div class="menu-img img" style="background-image: url(images/dessert-1.jpg);"></div>
-              <div class="text">
-              	<div class="d-flex">
-	                <div class="one-half">
-	                  <h3>Grilled Beef with potatoes</h3>
-	                </div>
-	                <div class="one-forth">
-	                  <span class="price">$29</span>
-	                </div>
-	              </div>
-	              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-              </div>
-            </div>
-            <div class="menus d-flex ftco-animate">
-              <div class="menu-img img" style="background-image: url(images/dessert-2.jpg);"></div>
-              <div class="text">
-              	<div class="d-flex">
-	                <div class="one-half">
-	                  <h3>Grilled Crab with Onion</h3>
-	                </div>
-	                <div class="one-forth">
-	                  <span class="price">$29</span>
-	                </div>
-	              </div>
-	              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-              </div>
-            </div>
-            <div class="menus d-flex ftco-animate">
-              <div class="menu-img img" style="background-image: url(images/dessert-3.jpg);"></div>
-              <div class="text">
-              	<div class="d-flex">
-	                <div class="one-half">
-	                  <h3>Grilled Crab with Onion</h3>
-	                </div>
-	                <div class="one-forth">
-	                  <span class="price">$29</span>
-	                </div>
-	              </div>
-	              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-              </div>
-            </div>
-        	</div>
-        	
-        	<div class="col-md-6 col-lg-4 menu-wrap">
-        		<div class="heading-menu text-center ftco-animate">
-        			<h3>Wine Card</h3>
-        		</div>
-        		<div class="menus d-flex ftco-animate">
-              <div class="menu-img img" style="background-image: url(images/wine-1.jpg);"></div>
-              <div class="text">
-              	<div class="d-flex">
-	                <div class="one-half">
-	                  <h3>Grilled Beef with potatoes</h3>
-	                </div>
-	                <div class="one-forth">
-	                  <span class="price">$29</span>
-	                </div>
-	              </div>
-	              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-              </div>
-            </div>
-            <div class="menus d-flex ftco-animate">
-              <div class="menu-img img" style="background-image: url(images/wine-2.jpg);"></div>
-              <div class="text">
-              	<div class="d-flex">
-	                <div class="one-half">
-	                  <h3>Grilled Crab with Onion</h3>
-	                </div>
-	                <div class="one-forth">
-	                  <span class="price">$29</span>
-	                </div>
-	              </div>
-	              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-              </div>
-            </div>
-            <div class="menus d-flex ftco-animate">
-              <div class="menu-img img" style="background-image: url(images/wine-3.jpg);"></div>
-              <div class="text">
-              	<div class="d-flex">
-	                <div class="one-half">
-	                  <h3>Grilled Crab with Onion</h3>
-	                </div>
-	                <div class="one-forth">
-	                  <span class="price">$29</span>
-	                </div>
-	              </div>
-	              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-              </div>
-            </div>
-        	</div>
-
-        	<div class="col-md-6 col-lg-4 menu-wrap">
-        		<div class="heading-menu text-center ftco-animate">
-        			<h3>Drinks</h3>
-        		</div>
-        		<div class="menus d-flex ftco-animate">
-              <div class="menu-img img" style="background-image: url(images/drink-1.jpg);"></div>
-              <div class="text">
-              	<div class="d-flex">
-	                <div class="one-half">
-	                  <h3>Grilled Beef with potatoes</h3>
-	                </div>
-	                <div class="one-forth">
-	                  <span class="price">$29</span>
-	                </div>
-	              </div>
-	              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-              </div>
-            </div>
-            <div class="menus d-flex ftco-animate">
-              <div class="menu-img img" style="background-image: url(images/drink-2.jpg);"></div>
-              <div class="text">
-              	<div class="d-flex">
-	                <div class="one-half">
-	                  <h3>Grilled Crab with Onion</h3>
-	                </div>
-	                <div class="one-forth">
-	                  <span class="price">$29</span>
-	                </div>
-	              </div>
-	              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-              </div>
-            </div>
-            <div class="menus d-flex ftco-animate">
-              <div class="menu-img img" style="background-image: url(images/drink-3.jpg);"></div>
-              <div class="text">
-              	<div class="d-flex">
-	                <div class="one-half">
-	                  <h3>Grilled Crab with Onion</h3>
-	                </div>
-	                <div class="one-forth">
-	                  <span class="price">$29</span>
-	                </div>
-	              </div>
-	              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-              </div>
-            </div>
-        	</div>
-        </div>
-    	</div>
-
-    </section>
-
-    <section class="ftco-section testimony-section" style="background-image: url(images/bg_5.jpg);" data-stellar-background-ratio="0.5">
-      <div class="container">
-        <div class="row justify-content-center mb-5 pb-2">
-          <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
-          	<span class="subheading">Testimony</span>
-            <h2 class="mb-4">Happy Customer</h2>
-          </div>
-        </div>
-        <div class="row ftco-animate justify-content-center">
-          <div class="col-md-7">
-            <div class="carousel-testimony owl-carousel ftco-owl">
-              <div class="item">
-                <div class="testimony-wrap text-center py-4 pb-5">
-                  <div class="user-img mb-4" style="background-image: url(images/person_1.jpg)">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                  </div>
-                  <div class="text p-3">
-                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Arthur Browner</p>
-                    <span class="position">Customer</span>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap text-center py-4 pb-5">
-                  <div class="user-img mb-4" style="background-image: url(images/person_2.jpg)">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                  </div>
-                  <div class="text p-3">
-                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Arthur Browner</p>
-                    <span class="position">Customer</span>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap text-center py-4 pb-5">
-                  <div class="user-img mb-4" style="background-image: url(images/person_3.jpg)">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                  </div>
-                  <div class="text p-3">
-                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Arthur Browner</p>
-                    <span class="position">Customer</span>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap text-center py-4 pb-5">
-                  <div class="user-img mb-4" style="background-image: url(images/person_4.jpg)">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                  </div>
-                  <div class="text p-3">
-                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Arthur Browner</p>
-                    <span class="position">Customer</span>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap text-center py-4 pb-5">
-                  <div class="user-img mb-4" style="background-image: url(images/person_3.jpg)">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                  </div>
-                  <div class="text p-3">
-                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Arthur Browner</p>
-                    <span class="position">Customer</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-			
-
-		<section class="ftco-section ftco-no-pt ftco-no-pb">
-			<div class="container">
-				<div class="row d-flex">
-          <div class="col-md-5 ftco-animate img img-2" style="background-image: url(images/bg_6.jpg);"></div>
-          <div class="col-md-7 ftco-animate makereservation p-4 p-md-5">
-          	<div class="heading-section ftco-animate mb-5">
-	          	<span class="subheading">Book a Table</span>
-	            <h2 class="mb-4">Make Reservation</h2>
-	          </div>
-            <form action="#">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="">Name</label>
-                    <input type="text" class="form-control" placeholder="Your Name">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="">Email</label>
-                    <input type="text" class="form-control" placeholder="Your Email">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="">Phone</label>
-                    <input type="text" class="form-control" placeholder="Phone">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="">Phone</label>
-                    <input type="text" class="form-control" id="book_date" placeholder="Date">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="">Time</label>
-                    <input type="text" class="form-control" id="book_time" placeholder="Time">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="">Person</label>
-                    <div class="select-wrap one-third">
-                      <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                      <select name="" id="" class="form-control">
-                        <option value="">Person</option>
-                        <option value="">1</option>
-                        <option value="">2</option>
-                        <option value="">3</option>
-                        <option value="">4+</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-12 mt-3">
-                  <div class="form-group">
-                    <input type="submit" value="Make a Reservation" class="btn btn-primary py-3 px-5">
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-			</div>
-		</section>
-
-    <footer class="ftco-footer ftco-bg-dark ftco-section">
-      <div class="container">
-        <div class="row mb-5">
-          <div class="col-md-6 col-lg-3 offset-lg-3">
-            <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Kusina</h2>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
-                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-              </ul>
-            </div>
-		  </div>
-		  
-          <div class="col-md-6 col-lg-3">
-            <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Hours</h2>
-              <ul class="list-unstyled open-hours">
-                <li class="d-flex"><span>Monday</span><span>9:00 - 24:00</span></li>
-                <li class="d-flex"><span>Tuesday</span><span>9:00 - 24:00</span></li>
-                <li class="d-flex"><span>Wednesday</span><span>9:00 - 24:00</span></li>
-                <li class="d-flex"><span>Thursday</span><span>9:00 - 24:00</span></li>
-                <li class="d-flex"><span>Friday</span><span>9:00 - 02:00</span></li>
-                <li class="d-flex"><span>Saturday</span><span>9:00 - 02:00</span></li>
-                <li class="d-flex"><span>Sunday</span><span> Closed</span></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-		<div class="row">
-          <div class="col-md-12 text-center">
-
-            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Mohammed Ilham</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-          </div>
-        </div>
-      </div>
-    </footer>
-  
-
-  <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-
-
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/jquery.waypoints.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.animateNumber.min.js"></script>
-  <script src="js/bootstrap-datepicker.js"></script>
-  <script src="js/jquery.timepicker.min.js"></script>
-  <script src="js/scrollax.min.js"></script>
-  <script src="js/main.js"></script>
-    
-  </body>
 </html>
